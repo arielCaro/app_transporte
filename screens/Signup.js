@@ -6,7 +6,8 @@ import { TouchableOpacity } from 'react-native';
 import { Ionicons } from "@expo/vector-icons"; 
 import Checkbox from 'expo-checkbox'; 
 import Button from '../components/Button';
-const Signup = () => {
+
+const Signup = ({navigation}) => {
     const [isPasswordShow, setIsPasswordShow] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     return (
@@ -180,7 +181,10 @@ const Signup = () => {
                 marginBottom: 10
             }}/>
 
-
+            <Button onPress={()=>navigation.navigate("welcome")}
+                          title= "volver" 
+                          style={{marginTop:30, width:"100%"}}  
+                          />
 
         </View>
       </SafeAreaView>

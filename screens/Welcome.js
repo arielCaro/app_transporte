@@ -30,11 +30,11 @@ const Welcome = ({navigation}) => {
               }}/>  
             </View>
             <View style={{
-                    paddingHorizontal:22,
-                    position: "absolute",
-                    top:400,
-                    width:"100%"
-                }}>
+                  paddingHorizontal:22,
+                  position: "absolute",
+                  top:400,
+                  width:"100%"
+                  }}>
                   <Text style={{
                     fontSize:50, 
                     fontWeight:800,
@@ -50,8 +50,27 @@ const Welcome = ({navigation}) => {
                           title= "Comenzar" 
                           style={{marginTop:30, width:"100%"}}  
                           />
-                 
-              </View>  
+                   <View style={{
+                        flexDirection:"row",
+                        marginTop:12,
+                        justifyContent: "center"
+                  }}>
+                    <Text style={{
+                      fontSize:16,
+                      color: COLORS.white,
+
+                    }}>¿Desea crear una cuenta ? </Text>
+                    <Pressable onPress={()=>navigation.navigate("Login")}> 
+                      
+                    
+                      <Text style={{
+                        fontSize:16,
+                        color: COLORS.white,
+                        fontWeight:"bold"
+                      }}>Login</Text>
+                    </Pressable>
+                  </View>
+            </View>  
           </View>  
       
         </LinearGradient>
