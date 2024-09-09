@@ -6,11 +6,13 @@ import Button  from '../components/Button';
 
 const Welcome = ({navigation}) => {
     return (
+      
         <LinearGradient
                   style={{
                     flex:1
                   }}
                   colors={[COLORS.backgraundColor, COLORS.backgraundColor2]}>
+          
           <View style={{ flex:1 }}>
             <View> 
               <Image source= {require("../assets/icon.png")} style={{

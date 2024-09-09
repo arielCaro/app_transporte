@@ -16,6 +16,7 @@
     "expo-checkbox": "^3.0.0",
     "expo-linear-gradient": "^13.0.2",
     "expo-status-bar": "~1.12.1",
+    "galio-framework": "^0.8.0",
     "react": "18.2.0",
     "react-native": "0.74.5",
     "react-native-gesture-handler": "^2.19.0",

@@ -4,7 +4,6 @@ import {SafeAreaView } from 'react-native-safe-area-context'
 import COLORS from '../constants/colors';
 import { TouchableOpacity } from 'react-native';
 import { Ionicons } from "@expo/vector-icons"; 
-import Checkbox from 'expo-checkbox'; 
 import Button from '../components/Button';
 
 const Login = ({navigation}) => {
@@ -92,10 +91,15 @@ const Login = ({navigation}) => {
                     </TouchableOpacity>
                 </View>
             </View>
+            
 
-            <Button title="Iniciar" filled style={{
-                marginTop:25,
-                marginBottom: 10
+             
+            <Button onPress={()=> navigation.navigate("Home")}
+                    title="Iniciar" 
+                    filled 
+                    style={{
+                    marginTop:25,
+                    marginBottom: 10
             }}/>
 
             <View style={{flexDirection: 'row', 
