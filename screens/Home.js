@@ -37,9 +37,9 @@ function MyTabs() {
         name="Notifications"
         component={Notifications}
         options={{
-          tabBarLabel: 'Updates',
+          tabBarLabel: 'Scanner',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="bell" color={color} size={26} />
+            <MaterialCommunityIcons name="scanner" color={color} size={26} />
           ),
         }}
       />
@@ -47,9 +47,9 @@ function MyTabs() {
         name="Profile"
         component={Profile}
         options={{
-          tabBarLabel: 'Profile',
+          tabBarLabel: 'OT',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={26} />
+            <MaterialCommunityIcons name="newspaper" color={color} size={26} />
           ),
         }}
       />
@@ -60,7 +60,7 @@ function MyTabs() {
 function Feed() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Feed!</Text>
+      <Text>Bienvenido!</Text>
     </View>
   );
 }
@@ -68,7 +68,7 @@ function Feed() {
 function Profile() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Profile!</Text>
+      <Text>Orden de trabajo!</Text>
     </View>
   );
 }
@@ -76,7 +76,7 @@ function Profile() {
 function Notifications() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Notifications!</Text>
+      <Text>Scanner de Guia de Orden de trabajo!</Text>
     </View>
   );
 }
