@@ -1,16 +1,17 @@
-import { StyleSheet, Dimensions, ScrollView, View, Text } from 'react-native';
+import { StyleSheet, Dimensions, ScrollView, View, Text, Button } from 'react-native';
 import React , {useState} from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { NavigationContainer } from '@react-navigation/native';
-
+import 'react-native-gesture-handler';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Tab = createMaterialBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 const Home = ({navigation}) => {
     
     return (
-      
+        
         <MyTabs />
     );
 }
@@ -19,9 +20,9 @@ function MyTabs() {
   return (
     <Tab.Navigator
       initialRouteName="Feed"
-      activeColor="#e91e63"
+      activeColor="#1e21e9"
       labelStyle={{ fontSize: 12 }}
-      style={{ backgroundColor: 'tomato' }}
+      style={{ backgroundColor: '#11138f' }}
     >
       <Tab.Screen
         name="Feed"
@@ -57,27 +58,71 @@ function MyTabs() {
   );
 }
 
-function Feed() {
+function Feed({navigation}) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Bienvenido!</Text>
+      <Button onPress={()=> navigation.navigate("Login")}
+                    title="Login" 
+                    filled 
+                    style={{
+                    marginTop:25,
+                    marginBottom: 10
+            }}/>
     </View>
   );
 }
 
-function Profile() {
+function Profile({navigation}) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Orden de trabajo!</Text>
+      <Button onPress={()=> navigation.navigate("Login")}
+                    title="Login" 
+                    filled 
+                    style={{
+                    marginTop:25,
+                    marginBottom: 10
+            }}/>
     </View>
   );
 }
 
-function Notifications() {
+function Notifications({navigation}) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Scanner de Guia de Orden de trabajo!</Text>
+      <Button onPress={()=> navigation.navigate("Login")}
+                    title="Login" 
+                    filled 
+                    style={{
+                    marginTop:25,
+                    marginBottom: 10
+            }}/>
     </View>
+  );
+}
+
+
+function MyDrawer() {
+  return (
+    <Drawer.Navigator initialRouteName="Feed">
+      <Drawer.Screen
+        name="Feed"
+        component={Feed}
+        options={{ drawerLabel: 'Home' }}
+      />
+      <Drawer.Screen
+        name="Notifications"
+        component={Notifications}
+        options={{ drawerLabel: 'Scanner' }}
+      />
+      <Drawer.Screen
+        name="Profile"
+        component={Profile}
+        options={{ drawerLabel: 'Orden de Trabajo' }}
+      />
+    </Drawer.Navigator>
   );
 }
 
