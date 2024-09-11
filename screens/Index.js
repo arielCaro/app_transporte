@@ -1,6 +1,6 @@
 import Login from "./Login";
-import Welcome from "./welcome";
-import Signup from "./signup";
+import Welcome from "./Welcome";
+import Signup from "./Signup";
 import Home from "./Home";  
 
 
