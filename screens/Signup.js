@@ -14,7 +14,7 @@ const Signup = ({navigation}) => {
         
       <SafeAreaView style={{flex:1, backgroundColor: COLORS.white }}>
         <StatusBar />
-        <ImageBackground source={require('../assets/camion-coronel.jpeg')} imageStyle={{ opacity:0.3}} style={{padding:20, height: '100%', resizeMode: 'cover' }}>
+        <ImageBackground source={require('../assets/fondo.jpg')} imageStyle={{ opacity:0.3}} style={{padding:20, height: '100%', resizeMode: 'cover' }}>
             <View style={{ flex:1, marginHorizontal: 22 }}>
                 <View style={{ marginVertical: 22 }}>
                     <Text style={{

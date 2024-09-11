@@ -1,4 +1,4 @@
-import  { View, Text, TextInput, Image, Pressable, StatusBar, ImageBackground } from 'react-native';
+import  { View, Text, TextInput, Image, Pressable, StatusBar, ImageBackground,StyleSheet } from 'react-native';
 import React , {useState} from 'react';
 import {SafeAreaView } from 'react-native-safe-area-context'
 import COLORS from '../constants/colors';
@@ -12,7 +12,7 @@ const Login = ({navigation}) => {
     return (
       <SafeAreaView style={{flex:1, backgroundColor: COLORS.white}}>
         <StatusBar />
-        <ImageBackground source={require('../assets/camion-coronel.jpeg')} 
+        <ImageBackground source={require('../assets/fondo.jpg')} 
                          imageStyle={{ opacity:0.3}} 
                          style={{padding:30, height: '100%', resizeMode: 'cover' }}>
         <View style={{ flex:1, marginHorizontal: 22 }}>
@@ -26,6 +26,7 @@ const Login = ({navigation}) => {
                 <Text style={{fontSize:14, color: COLORS.black}}>
                     ingrese sus datos
                 </Text>
+                <Image source={require('../assets/wellcome.png')} style={styles.tinyLogo}></Image>
             </View>
 
             <View style={{ marginBottom: 12}}>
@@ -155,5 +156,19 @@ const Login = ({navigation}) => {
       </SafeAreaView>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+      paddingTop: 50,
+    },
+    tinyLogo: {
+      width: 100,
+      height: 100,
+    },
+    logo: {
+      width: 66,
+      height: 58,
+    },
+  });
 
 export default Login;
