@@ -4,13 +4,11 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import COLORS from '../constants/colors';
-import { TouchableOpacity } from 'react-native';
-import { Ionicons } from "@expo/vector-icons"; 
 import Button from '../components/Button';
-
+import ButtonGradient from '../components/ButtonGradient'
 const Tab = createMaterialBottomTabNavigator();
 const Drawer = createDrawerNavigator();
-
+const { width, height } = Dimensions.get('window')
 const Home = ({navigation}) => {
     
     return (
@@ -23,9 +21,9 @@ function MyTabs() {
   return (
     <Tab.Navigator
       initialRouteName="HomeScreen"
-      activeColor="#1e21e9"
+      activeColor="#b85602"
       labelStyle={{ fontSize: 12 }}
-      style={{ backgroundColor: '#11138f' }}
+      style={{ backgroundColor: '#fce9d2' }}
     >
       <Tab.Screen
         name="HomeScreen"
@@ -64,30 +62,31 @@ function MyTabs() {
 function HomeScreen({navigation}) {
   return (
 
-    <SafeAreaView style={{flex:1, backgroundColor: COLORS.white}}>
-    <StatusBar />
+    <View style={styles.mainContainer}>
+    
       <ImageBackground source={require('../assets/fondo.jpg')} 
                       imageStyle={{ opacity:0.3}} 
-                      style={{padding:30, height: '100%', resizeMode: 'cover' }}>
+                      style={{ 
+                          height: '100%', 
+                          resizeMode: 'cover' }}>
           <View style={{ flex:1, marginHorizontal: 22 }}>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
               <Text>Bienvenido a su sesion!</Text>
 
 
             </View>
-            <Button onPress={()=> navigation.navigate("Login")}
-                            title="Login" 
-                            filled 
-                            style={{
-                            marginTop:25,
-                            marginBottom: 10,
-                            height:'100%'
-                    }}/>
+            <View style={{ 
+                            flexDirection: 'row',
+                            marginVertical: 6,
+                            justifyContent: 'center'
+                        }}>
+              <ButtonGradient title="Login" onPress={()=> navigation.navigate("Login")}/>
+            </View>
           </View>
           
       </ImageBackground>
       
-    </SafeAreaView>
+    </View>
 
     
   );
@@ -95,55 +94,61 @@ function HomeScreen({navigation}) {
 
 function ScannerScreen({navigation}) {
   return (
-    <SafeAreaView style={{flex:1, backgroundColor: COLORS.white}}>
-    <StatusBar />
+    <View style={styles.mainContainer}>
+    
       <ImageBackground source={require('../assets/fondo.jpg')} 
                       imageStyle={{ opacity:0.3}} 
-                      style={{padding:30, height: '100%', resizeMode: 'cover' }}>
+                      style={{ 
+                          height: '100%', 
+                          resizeMode: 'cover' }}>
           <View style={{ flex:1, marginHorizontal: 22 }}>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <Text>Scanner de Orden de trabajo!</Text>
+              <Text>Scanner de Ordenes de trabajo!</Text>
+
+
             </View>
-            <Button onPress={()=> navigation.navigate("Login")}
-                            title="Login" 
-                            filled 
-                            style={{
-                            marginTop:25,
-                            marginBottom: 10,
-                            height:'100%'
-                    }}/>
+            <View style={{ 
+                            flexDirection: 'row',
+                            marginVertical: 6,
+                            justifyContent: 'center'
+                        }}>
+              <ButtonGradient title="Login" onPress={()=> navigation.navigate("Login")}/>
+            </View>
           </View>
           
       </ImageBackground>
       
-    </SafeAreaView>
+    </View>
   );
 }
 
 function OrderWorkScreen({navigation}) {
   return (
-    <SafeAreaView style={{flex:1, backgroundColor: COLORS.white}}>
-    <StatusBar />
+    <View style={styles.mainContainer}>
+    
       <ImageBackground source={require('../assets/fondo.jpg')} 
                       imageStyle={{ opacity:0.3}} 
-                      style={{padding:30, height: '100%', resizeMode: 'cover' }}>
+                      style={{ 
+                          height: '100%', 
+                          resizeMode: 'cover' }}>
           <View style={{ flex:1, marginHorizontal: 22 }}>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <Text>Ingresar una Orden de trabajo</Text>
+              <Text>Ordenes de trabajo!</Text>
+
+
             </View>
-            <Button onPress={()=> navigation.navigate("Login")}
-                            title="Login" 
-                            filled 
-                            style={{
-                            marginTop:25,
-                            marginBottom: 10,
-                            height:'100%'
-                    }}/>
+            <View style={{ 
+                            flexDirection: 'row',
+                            marginVertical: 6,
+                            justifyContent: 'center'
+                        }}>
+              <ButtonGradient title="Login" onPress={()=> navigation.navigate("Login")}/>
+            </View>
           </View>
           
       </ImageBackground>
       
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -169,5 +174,50 @@ function MyDrawer() {
     </Drawer.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  mainContainer: {
+    backgroundColor: '#f1f1f1',
+    flex: 1,
+  },
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  containerSVG: {
+    width: width,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  titulo: {
+    fontSize: 80,
+    color: '#362612',
+    fontWeight: 'bold',
+  },
+  subTitle: {
+    fontSize: 20,
+    color: 'gray',
+  },
+  textInput: {
+    padding: 10,
+    paddingStart: 30,
+    width: '80%',
+    height: 50,
+    marginTop: 20,
+    borderRadius: 30,
+    backgroundColor: '#fff',
+  },
+  forgotPassword: {
+    fontSize: 14,
+    color: 'gray',
+    marginTop: 15,
+    fontWeight:'bold',
+    marginLeft: 6
+  },
+  button: {
+
+  },
+  
+});
 
 export default Home;

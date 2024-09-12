@@ -6,6 +6,7 @@ const COLORS = {
     grey: "#CCCCCC",
     backgraundColor: "#493cff",
     backgraundColor2: "#14b1fa",
+    LoginButton: "#b85602"
 
 }
 

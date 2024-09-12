@@ -1,174 +1,195 @@
-import  { View, Text, TextInput, Image, Pressable, StatusBar, ImageBackground,StyleSheet } from 'react-native';
+import  { View, Text, TextInput, Image, 
+        Pressable, StatusBar, ImageBackground,StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import React , {useState} from 'react';
 import {SafeAreaView } from 'react-native-safe-area-context'
 import COLORS from '../constants/colors';
-import { TouchableOpacity } from 'react-native';
 import { Ionicons } from "@expo/vector-icons"; 
 import Button from '../components/Button';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+
+import ButtonGradient from '../components/ButtonGradient'
+import Svg, { Path, Defs, LinearGradient, Stop } from "react-native-svg"
+import { Block } from 'galio-framework';
+const { width, height } = Dimensions.get('window')
 
 const Login = ({navigation}) => {
     const [isPasswordShow, setIsPasswordShow] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
+
     return (
-      <SafeAreaView style={{flex:1, backgroundColor: COLORS.white}}>
-        <StatusBar />
+      <View style={styles.mainContainer}>
         <ImageBackground source={require('../assets/fondo.jpg')} 
                          imageStyle={{ opacity:0.3}} 
-                         style={{padding:30, height: '100%', resizeMode: 'cover' }}>
-        <View style={{ flex:1, marginHorizontal: 22 }}>
-            <View style={{ marginVertical: 22 }}>
-                <Text style={{
-                    fontSize: 24, fontWeight: "bold", marginVertical:12, color: COLORS.black
-                }}> Bienvenido a </Text>
-                <Text style={{fontSize:14, color: COLORS.black}}>
-                    Gestión de Transporte y Carga
-                </Text>
-                <Text style={{fontSize:14, color: COLORS.black}}>
-                    ingrese sus datos
-                </Text>
-                <Image source={require('../assets/wellcome.png')} style={styles.tinyLogo}></Image>
+                         style={{height: '100%', resizeMode: 'cover' }}>
+            <View style={styles.containerSVG}>
+                <SvgTop/>
             </View>
+            <View style={styles.container}>
+                <Text style={styles.titulo}>Hola</Text>
+                <Text style={styles.subTitle}>Inicia sesión en tu cuenta</Text>
+                <TextInput 
+                placeholder="Ingresa tu email"
+                style={styles.textInput}
+                placeholderTextColor={COLORS.grey}
+                />
+                <TextInput 
+                placeholder="Ingresa tu contraseña"
+                style={styles.textInput}
+                secureTextEntry={true}
+                placeholderTextColor={COLORS.grey}
+                />
+                 <Pressable onPress={()=> navigation.navigate("Signup")}>
+                    <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
+                 </Pressable>
 
-            <View style={{ marginBottom: 12}}>
-                <Text style={{
-                    fontSize:16,
-                    fontWeight: 400,
-                    marginVertical: 8
-                    }}> Email </Text>
-                <View style={{
-                    width:'100%',
-                    height: 48,
-                    borderColor: COLORS.black,
-                    borderWidth: 1,
-                    borderRadius: 8,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    paddingLeft:22
-                }}>
-                    <TextInput placeholder='Ingrese su email' 
-                               placeholderTextColor={COLORS.black} 
-                               keyboardType='email-address'
-                               style={{ width: "100%" 
+                <ButtonGradient title='Ingresar' onPress={()=> navigation.navigate("Home")}/>
+                <View style={{ flex:1, height: 1, backgroundColor: COLORS.black, marginHorizontal: 10 }} />
+                <Text style={ styles.forgotPassword }> o inicia con </Text>
+                <View style={{ flex:1, height: 1, backgroundColor: COLORS.black, marginHorizontal: 10 }} />
+                  <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+                      <TouchableOpacity onPress={ () => navigation.navigate("Home")} 
+                                        style={{  alignItems: 'center',
+                                        width: 200,
+                                        marginTop: 20,
 
-                               }}/>
-                </View>
+                                      }}>
+                          <Image source={require('../assets/Google__G__logo.svg.png')} 
+                              style={{
+                                      height: 36,
+                                      width: 36,
+                                      marginRight: 8
+                              }}
+                              resizeMode='contain'
+                              />
+                              <Text>Google</Text>
+
+                      </TouchableOpacity>
+                  </View>
+
+                  <View style={{
+                          flexDirection: 'row',
+                          justifyContent: 'center',
+                          marginVertical: 22
+                      }}>
+                          <Text style={{fontSize:14, color:COLORS.black, fontWeight:'bold'}}> No tengo una cuenta </Text>
+                          <Pressable onPress={()=> navigation.navigate("Signup")}>
+                              <Text style={{ fontSize:14, color: COLORS.LoginButton, fontWeight:'bold', marginLeft:6 }}>Crear</Text>  
+                          </Pressable>
+                  </View>
+                <StatusBar style="auto" />
             </View>
-
-            <View style={{ marginBottom: 12}}>
-                <Text style={{
-                    fontSize:16,
-                    fontWeight: 400,
-                    marginVertical: 8
-                    }}> Contraseña </Text>
-                <View style={{
-                    width:'100%',
-                    height: 48,
-                    borderColor: COLORS.black,
-                    borderWidth: 1,
-                    borderRadius: 8,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    paddingLeft:22
-                }}>
-                    <TextInput placeholder='Ingrese una contraseña' 
-                               placeholderTextColor={COLORS.black}                                
-                               style={{ width: "100%" 
-
-                               }} 
-                               secureTextEntry={isPasswordShow}/>
-                    <TouchableOpacity onPress={()=> setIsPasswordShow(!isPasswordShow)}  
-                                      style={{
-                                            position: "absolute",
-                                            right: 12
-                                        }}> 
-                       { 
-                            isPasswordShow == true ? (
-                                <Ionicons  name="eye-off" size={24} color={COLORS.black} />
-                            ) : (
-                                <Ionicons  name="eye" size={24} color={COLORS.black} />
-                            )
-                       }
-                        
-                    </TouchableOpacity>
-                </View>
-            </View>
-            
-
-             
-            <Button onPress={()=> navigation.navigate("Home")}
-                    title="Iniciar" 
-                    filled 
-                    style={{
-                    marginTop:25,
-                    marginBottom: 10
-            }}/>
-
-            <View style={{flexDirection: 'row', 
-                          alignItems: 'center',
-                          marginVertical: 20
-            }}>
-
-                <View style={{ flex:1, height: 1, backgroundColor: COLORS.grey, marginHorizontal: 10 }} />
-                <Text style={{ fontSize: 14 }}> o inicia con </Text>
-                <View style={{ flex:1, height: 1, backgroundColor: COLORS.grey, marginHorizontal: 10 }} />
-            </View>
-
-            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                <TouchableOpacity onPress={ () => console.log('Prossed')} 
-                                  style={{ flex:1,
-                                           alignItems: 'center',
-                                           justifyContent: 'center',
-                                           flexDirection: 'row',
-                                           height: 52,
-                                           borderWidth: 1, 
-                                           borderColor: COLORS.black,
-                                           marginRight: 4, 
-                                           borderRadius: 10
-
-                                  }}>
-                    <Image source={require('../assets/Google__G__logo.svg.png')} 
-                           style={{
-                                height: 36,
-                                width: 36,
-                                marginRight: 8
-                           }}
-                           resizeMode='contain'
-                           />
-                        <Text>Google</Text>
-
-                </TouchableOpacity>
-            </View>
-
-            <View style={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-                marginVertical: 22
-            }}>
-                <Text style={{fontSize:16, color:COLORS.black}}>Crear una </Text>
-                <Pressable onPress={()=> navigation.navigate("Signup")}>
-                    <Text style={{ fontSize:16, color: COLORS.primary, fontWeight:'bold', marginLeft:6 }}> Cuenta</Text>  
-                </Pressable>
-            </View>
-
-        </View>
         </ImageBackground>
         
-      </SafeAreaView>
+      
+        
+      </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-      paddingTop: 50,
-    },
-    tinyLogo: {
-      width: 100,
-      height: 100,
-    },
-    logo: {
-      width: 66,
-      height: 58,
-    },
-  });
+  mainContainer: {
+    backgroundColor: '#f1f1f1',
+    flex: 1,
+  },
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  containerSVG: {
+    width: width,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  titulo: {
+    fontSize: 80,
+    color: '#362612',
+    fontWeight: 'bold',
+  },
+  subTitle: {
+    fontSize: 20,
+    color: 'gray',
+  },
+  textInput: {
+    padding: 10,
+    paddingStart: 30,
+    width: '80%',
+    height: 50,
+    marginTop: 20,
+    borderRadius: 30,
+    backgroundColor: '#fff',
+  },
+  forgotPassword: {
+    fontSize: 14,
+    color: 'gray',
+    marginTop: 15,
+    fontWeight:'bold',
+    marginLeft: 6
+  },
+  button: {
 
-export default Login;
+  },
+  
+});
+
+  function SvgTop() {
+    return (
+      <Svg
+      width={500}
+      height={324}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <Path
+        d="M297.871 315.826c73.405 13.896 165.338-13.964 202.129-29.63V230H1.326v63.5c69.15-42.913 204.789 4.957 296.545 22.326z"
+        fill="url(#prefix__paint0_linear_103:6)"
+        fillOpacity={0.5}
+      />
+      <Path
+        d="M237.716 308.627C110.226 338.066 30.987 318.618 0 304.77V0h500v304.77c-43.161-12.266-134.794-25.581-262.284 3.857z"
+        fill="url(#prefix__paint1_linear_103:6)"
+      />
+      <Defs>
+        <LinearGradient
+          id="prefix__paint0_linear_103:6"
+          x1={492.715}
+          y1={231.205}
+          x2={480.057}
+          y2={364.215}
+          gradientUnits="userSpaceOnUse"
+        >
+          <Stop stopColor="#FFB677" />
+          <Stop offset={1} stopColor="#d1a06f" />
+        </LinearGradient>
+        <LinearGradient
+          id="prefix__paint1_linear_103:6"
+          x1={7.304}
+          y1={4.155}
+          x2={144.016}
+          y2={422.041}
+          gradientUnits="userSpaceOnUse"
+        >
+          <Image source={require('../assets/logo.png')} style={{ 
+                                    height: 100,
+                                    width: 100,
+                                    margin: 'auto',
+                                    marginTop: '25%' }}></Image>
+          <Stop stopColor="#b85602" />
+          <Stop offset={1} stopColor="#FFB677" />
+          
+        </LinearGradient>
+      </Defs>
+    </Svg>
+    )
+  }
+
+
+  const AuthGoogle = () =>{
+
+  }
+  
+  const AuthCorporateAccount = () =>{
+      
+  }
+
+  export default Login;
+

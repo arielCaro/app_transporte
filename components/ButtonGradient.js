@@ -2,17 +2,18 @@ import React from "react";
 import { StyleSheet, Text, View, TextInput, Dimensions, TouchableOpacity} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function  ButtonGradient () {
+export default function  ButtonGradient (props) {
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={props.onPress}>
             <LinearGradient
                 // Button Linear Gradient
-                colors={['#14b1fa', '#493cff']}
+                colors={['#b85602', '#FFB677']}
                 start={{x: 0, y: 0}}
                 end={{x: 1, y: 1}}    
                 style={styles.button}
+                
             >
-                <Text style={styles.text}>INGRESAR</Text>
+                <Text style={styles.text}> {props.title} </Text>
             </LinearGradient>
         </TouchableOpacity>
     );
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         width: 200,
-        marginTop: 60,
+        marginTop: 25,
     },
 
     text: {
